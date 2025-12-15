@@ -43,7 +43,7 @@ if st.button("Generate Analysis", type="primary"):
             try:
                 # ---------------------------------------------------------
                 # PASTE YOUR N8N CLOUD WEBHOOK URL BELOW
-                webhook_url = "http://localhost:5678/webhook/chat"
+                webhook_url = "https://my-n8n-bot-25ks.onrender.com/webhook/chat"
                 # ---------------------------------------------------------
                 
                 payload = {"chatInput": f"Research {url_input}"}
