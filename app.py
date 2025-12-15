@@ -4,7 +4,7 @@ import requests
 # ---------------------------------------------------------
 # CONFIGURATION
 # ---------------------------------------------------------
-DEVELOPER_NAME = "Lavela Siswana"  # <--- ENTER YOUR NAME HERE
+DEVELOPER_NAME = "Siswana AI Solutions"  # <--- ENTER YOUR NAME HERE
 PAGE_TITLE = "Company Intelligence Portal"
 # ---------------------------------------------------------
 
