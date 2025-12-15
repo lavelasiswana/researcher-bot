@@ -1,43 +1,71 @@
+```python
 import streamlit as st
 import requests
 
-# Page Config
-st.set_page_config(page_title="AI Lead Researcher", page_icon="🕵️")
+# ---------------------------------------------------------
+# CONFIGURATION
+# ---------------------------------------------------------
+DEVELOPER_NAME = "Lavela Siswana" 
+PAGE_TITLE = "Company Intelligence Portal"
+# ---------------------------------------------------------
 
-# Title
-st.title("🕵️ AI Lead Researcher")
-st.markdown("Enter a company URL to generate a business analysis.")
+# 1. Page Configuration
+st.set_page_config(
+    page_title=PAGE_TITLE,
+    layout="centered"
+)
 
-# Input
-url_input = st.text_input("Company URL (e.g., stripe.com)", "")
+# 2. Sidebar with Developer Branding
+with st.sidebar:
+    st.header("System Status")
+    st.info("System Online")
+    st.markdown("---")
+    st.markdown(f"**Developer:** {DEVELOPER_NAME}")
+    st.caption("AI Solutions Architect")
 
-# Button
-if st.button("Research"):
+# 3. Main Interface
+st.header(AI Research Bot)
+st.markdown("""
+    This tool utilizes an Agentic AI workflow to research companies, 
+    analyze business models, and generate strategic summaries.
+""")
+st.divider()
+
+# 4. Input Section
+url_input = st.text_input("Enter Company URL", placeholder="e.g. stripe.com")
+
+# 5. Logic & Execution
+if st.button("Generate Analysis", type="primary"):
     if not url_input:
-        st.warning("Please enter a URL.")
+        st.error("Please enter a valid URL to begin the research.")
     else:
-        with st.spinner("Agent is visiting the website and analyzing... (This takes about 20s)"):
+        # Professional Loading State
+        with st.spinner("Agent is analyzing target infrastructure..."):
             try:
                 # ---------------------------------------------------------
-                # PASTE YOUR N8N WEBHOOK URL BELOW INSIDE THE QUOTES
+                # PASTE YOUR N8N CLOUD WEBHOOK URL BELOW
                 webhook_url = "https://your-n8n-app.onrender.com/webhook/chat"
                 # ---------------------------------------------------------
                 
-                # We send the user's input as "chatInput" because the Agent expects that
                 payload = {"chatInput": f"Research {url_input}"}
-                
                 response = requests.post(webhook_url, json=payload)
                 
                 if response.status_code == 200:
                     data = response.json()
-                    st.success("Analysis Complete!")
-                    # We display the text that came back from n8n
-                    st.markdown(data.get('output', "No output received."))
+                    
+                    # Display Results
+                    st.success("Analysis Generated Successfully")
+                    st.subheader("Executive Summary")
+                    st.markdown("---")
+                    # Clean output display
+                    st.markdown(data.get('output', "No data received."))
                 else:
-                    st.error(f"Error: {response.status_code}")
+                    st.error(f"Server Error: {response.status_code}")
+                    
             except Exception as e:
-                st.error(f"Failed to connect: {e}")
+                st.error(f"Connection Error: {str(e)}")
 
-# Footer
+# 6. Professional Footer
 st.markdown("---")
-st.caption("Powered by n8n Agentic AI")
+st.caption("© 2025 Automated Research Systems | Confidential Report")
+```
