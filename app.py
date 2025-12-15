@@ -1,11 +1,10 @@
-```
 import streamlit as st
 import requests
 
 # ---------------------------------------------------------
 # CONFIGURATION
 # ---------------------------------------------------------
-DEVELOPER_NAME = "Lavela Siswana" 
+DEVELOPER_NAME = "Lavela Siswana"  # <--- ENTER YOUR NAME HERE
 PAGE_TITLE = "Company Intelligence Portal"
 # ---------------------------------------------------------
 
@@ -20,11 +19,11 @@ with st.sidebar:
     st.header("System Status")
     st.info("System Online")
     st.markdown("---")
-    st.markdown(f"**Developer:** {Lavela Siswana}")
+    st.markdown(f"**Developer:** {DEVELOPER_NAME}")
     st.caption("AI Solutions Architect")
 
 # 3. Main Interface
-st.header(AI Research Bot)
+st.header(PAGE_TITLE)
 st.markdown("""
     This tool utilizes an Agentic AI workflow to research companies, 
     analyze business models, and generate strategic summaries.
@@ -44,7 +43,7 @@ if st.button("Generate Analysis", type="primary"):
             try:
                 # ---------------------------------------------------------
                 # PASTE YOUR N8N CLOUD WEBHOOK URL BELOW
-                webhook_url = "https://your-n8n-app.onrender.com/webhook/chat"
+                webhook_url = "http://localhost:5678/webhook/chat"
                 # ---------------------------------------------------------
                 
                 payload = {"chatInput": f"Research {url_input}"}
@@ -68,4 +67,3 @@ if st.button("Generate Analysis", type="primary"):
 # 6. Professional Footer
 st.markdown("---")
 st.caption("© 2025 Automated Research Systems | Confidential Report")
-```
