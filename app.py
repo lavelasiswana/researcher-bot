@@ -20,7 +20,7 @@ with st.sidebar:
     st.header("System Status")
     st.info("System Online")
     st.markdown("---")
-    st.markdown(f"**Developer:** {DEVELOPER_NAME}")
+    st.markdown(f"**Developer:** {Lavela Siswana}")
     st.caption("AI Solutions Architect")
 
 # 3. Main Interface
